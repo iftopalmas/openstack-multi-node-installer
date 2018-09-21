@@ -13,8 +13,9 @@ function ip_addr()
 }
 
 ./download.sh
+cd devstack
 
-echo "Starting controller node installation"
+echo "Starting node installation"
 HOST_IP=$(ip_addr $FLAT_INTERFACE)
 FLAT_INTERFACE=$(net_interface)
 USER="stack"
