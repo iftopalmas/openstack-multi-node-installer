@@ -8,11 +8,22 @@ echo ""
 echo "Run $0 -h for help" 
 echo ""
 
-if [[ $# -lt 1 || $1 == "-h" || $1 == "/h" ]]; then
+function usage()
+{
    echo "Usage: $0 [options]"
    echo -e "\t-c or --controller installs the OpenStack controller"
-   echo -e "\t-n or --node       installs an OpenStack node"
-   echo -e "                     (run this for every node you want to add to the cluster)"
+   echo -e "\t-n or --node  Controller-IP     installs an OpenStack node that will be managed"
+   echo -e "                                  by the controller with the given IP address"
+   echo -e "                                  (run this for every node you want to add to the cluster)"  
+}
+
+if [[ $# -lt 1 || $1 == "-h" || $1 == "/h" ]]; then
+   usage
+   exit 0
+fi
+
+if [[ $# -lt 2 && ($1 == "-n" || $1 == "--node") ]]; then
+   usage
    exit 0
 fi
 
@@ -32,7 +43,8 @@ if [[ $1 == "-c" || $1 == "--controller" ]]; then
 elif [[ $1 == "-n" || $1 == "--node" ]]; then
   echo "Nodes"
   #SERVICE_HOST = IP of the open stack controller
-  #sudo -i -u $USER ./openstack-node.sh $SERVICE_HOST
+  SERVICE_HOST=$2
+  sudo -i -u $USER ./openstack-node.sh $SERVICE_HOST
 fi
 
 
