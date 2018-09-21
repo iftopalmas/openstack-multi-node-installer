@@ -30,7 +30,7 @@ fi
 apt-get install -y git
 
 USERNAME="stack"
-cp *.sh /opt/$USERNAME && chmod a+x *.sh
+cp *.sh /opt/$USERNAME && chmod a+x /opt/$USERNAME/*.sh
 
 useradd -s /bin/bash -d /opt/$USERNAME -m $USERNAME
 
