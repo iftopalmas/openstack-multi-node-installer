@@ -29,20 +29,20 @@ fi
 
 apt-get install -y git
 
-cp *.sh /opt/$USER && chmod a+x *.sh
+USERNAME="stack"
+cp *.sh /opt/$USERNAME && chmod a+x *.sh
 
-USER="stack"
-useradd -s /bin/bash -d /opt/$USER -m $USER
+useradd -s /bin/bash -d /opt/$USERNAME -m $USERNAME
 
 #Gives user root permission if it has not been given yet
-cat /etc/sudoers | grep "$USER ALL=(ALL) NOPASSWD: ALL" > /dev/null || echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+cat /etc/sudoers | grep "$USERNAME ALL=(ALL) NOPASSWD: ALL" > /dev/null || echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 if [[ $1 == "-c" || $1 == "--controller" ]]; then
-  sudo -i -u $USER ./openstack-controller.sh
+  sudo -i -u $USERNAME ./openstack-controller.sh
 elif [[ $1 == "-n" || $1 == "--node" ]]; then
   #SERVICE_HOST = IP of the open stack controller
   SERVICE_HOST=$2
-  sudo -i -u $USER ./openstack-node.sh $SERVICE_HOST
+  sudo -i -u $USERNAME ./openstack-node.sh $SERVICE_HOST
 fi
 
 
