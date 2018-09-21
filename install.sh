@@ -20,16 +20,16 @@ apt-get install -y git
 
 USER="stack"
 useradd -s /bin/bash -d /opt/$USER -m $USER
-cp controller.sh /opt/$USER
+cp openstack-controller.sh /opt/$USER
 
 #Gives user root permission if it has not been given yet
 cat /etc/sudoers | grep "$USER ALL=(ALL) NOPASSWD: ALL" > /dev/null || echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 if [[ $1 == "-c" || $1 == "--controller" ]]; then
-  chmod +x controller.sh
+  chmod +x openstack-controller.sh
   CLEAN=$2
   sudo -i -u $USER ./openstack-controller.sh $CLEAN
-elif [[ $1 == "-n" || $1 == "--node" ]];
+elif [[ $1 == "-n" || $1 == "--node" ]]; then
   echo "Nodes"
   #SERVICE_HOST = IP of the open stack controller
   #sudo -i -u $USER ./openstack-node.sh $SERVICE_HOST
