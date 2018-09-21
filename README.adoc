@@ -1,0 +1,19 @@
+= Automates the installation of Multi-Node OpenStack using DevStack
+
+DevStack provides a set of scripts to install OpenStack on a Linux distribution
+in order to set up a private cloud infrastructure.
+However, the installation of a multi-node development environment requires
+some manual steps as described in the https://docs.openstack.org/devstack/latest/guides/multinode-lab.html[DevStack documentation].
+
+== How to Use
+
+DevStack documentation recommend you to use a minimal fresh installation of Linux such as https://help.ubuntu.com/community/Installation/MinimalCD[Ubuntu 16.04 Minimal CD].
+You're encourage to read the https://docs.openstack.org/devstack/latest/guides/multinode-lab.html[DevStack documentation] to understand what is going on behind the scenes.
+
+=== Install OpenStack Controller
+
+After installing you Linux distribution you can just execute `./install.sh --controller` that every dependency will be downloaded and installed. The process takes a lot of time and a summary is shown at the end. Just be patient.
+
+=== Install OpenStack Node
+
+For every physical machine (node) that you want to add to the cluster you have to open a terminal at such a machine and execute `./install.sh --node`
