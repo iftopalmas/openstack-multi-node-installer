@@ -40,7 +40,8 @@ LOGFILE=/opt/stack/logs/stack.sh.log
 ADMIN_PASSWORD=$PASSWD
 DATABASE_PASSWORD=$PASSWD
 RABBIT_PASSWORD=$PASSWD
-SERVICE_PASSWORD=$PASSWD" > local.conf  
+SERVICE_PASSWORD=$PASSWD
+VERBOSE=true" > local.conf  
 
 #In the multi-node configuration the first 10 or so IPs in the private subnet are usually reserved. 
 #Add this to local.sh to have it run after every stack.sh run:
