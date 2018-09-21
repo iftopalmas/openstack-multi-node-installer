@@ -20,11 +20,12 @@ cd devstack
 
 echo "Starting controller installation"
 FLAT_INTERFACE=$(net_interface)
+HOST_IP=$(ip_addr $FLAT_INTERFACE)
 USER="stack"
 PASSWD=$USER
 
 echo "[[local|localrc]]
-HOST_IP=$(ip_addr $FLAT_INTERFACE)
+HOST_IP=$HOST_IP
 FLAT_INTERFACE=$FLAT_INTERFACE
 FIXED_RANGE=10.4.128.0/20
 FIXED_NETWORK_SIZE=256
@@ -43,3 +44,12 @@ echo "for i in `seq 2 10`; do /opt/$USER/nova/bin/nova-manage fixed reserve 10.4
 
 ./stack.sh
 
+echo ""
+echo ""
+echo "YOUR INTERVENTION IS REQUIRED NOW!"
+echo ""
+echo ""
+echo "In order to use the OpenStack command line tools at the controller you must configure some environment variables"
+echo "Open http://$HOST_IP/dashboard/project/api_access/view_credentials/"
+echo "With the data provided at such a page you must create the following environment variables:"
+echo -e "\tOS_USERNAME, OS_PASSWORD, OS_AUTH_URL and OS_PROJECT_NAME"
