@@ -5,8 +5,7 @@ function net_interface()
  ifconfig | head -n 1 | cut -d' ' -f1 | cut -d':' -f1 
 }
 
-#$1 - network interface
-
+# $1 - network interface name
 function ip_addr()
 {
   ip -4 addr show $1 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
