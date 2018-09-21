@@ -1,4 +1,4 @@
-= Automates the installation of Multi-Node OpenStack using DevStack
+= Automates the installation of Multi-Node OpenStack Cluster using DevStack
 
 DevStack provides a set of scripts to install OpenStack on a Linux distribution
 in order to set up a private cloud infrastructure.
