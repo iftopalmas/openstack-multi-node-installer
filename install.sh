@@ -17,13 +17,6 @@ function usage()
    echo -e "                                  (run this for every node you want to add to the cluster)"  
 }
 
-function git_clone()
-{
-  #rm -rf devstack
-  test -d devstack || git clone https://git.openstack.org/openstack-dev/devstack -v
-  cd devstack
-}
-
 if [[ $# -lt 1 || $1 == "-h" || $1 == "/h" ]]; then
    usage
    exit 0
@@ -36,8 +29,7 @@ fi
 
 apt-get install -y git
 
-#Download DevStack
-git_clone
+cp *.sh /opt/$USER && chmod a+x *.sh
 
 USER="stack"
 useradd -s /bin/bash -d /opt/$USER -m $USER
@@ -46,10 +38,8 @@ useradd -s /bin/bash -d /opt/$USER -m $USER
 cat /etc/sudoers | grep "$USER ALL=(ALL) NOPASSWD: ALL" > /dev/null || echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 if [[ $1 == "-c" || $1 == "--controller" ]]; then
-  cp openstack-controller.sh /opt/$USER && chmod +x openstack-controller.sh
   sudo -i -u $USER ./openstack-controller.sh
 elif [[ $1 == "-n" || $1 == "--node" ]]; then
-  cp openstack-node.sh /opt/$USER && chmod +x openstack-node.sh
   #SERVICE_HOST = IP of the open stack controller
   SERVICE_HOST=$2
   sudo -i -u $USER ./openstack-node.sh $SERVICE_HOST

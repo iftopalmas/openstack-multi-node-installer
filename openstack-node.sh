@@ -12,6 +12,8 @@ function ip_addr()
   ip -4 addr show $1 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
 }
 
+./download.sh
+
 echo "Starting controller node installation"
 HOST_IP=$(ip_addr $FLAT_INTERFACE)
 FLAT_INTERFACE=$(net_interface)
