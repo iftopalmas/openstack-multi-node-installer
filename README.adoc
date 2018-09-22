@@ -16,4 +16,4 @@ After installing you Linux distribution you can just execute `./install.sh --con
 
 === Install OpenStack Node
 
-For every physical machine (node) that you want to add to the cluster you have to open a terminal at such a machine and execute `./install.sh --node`
+For every physical machine (node) that you want to add to the cluster you have to open a terminal at such a machine and execute `./install.sh --node Controller-IP`
