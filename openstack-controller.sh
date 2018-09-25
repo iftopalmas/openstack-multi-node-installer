@@ -45,11 +45,7 @@ echo "for i in `seq 2 10`; do /opt/$USER/nova/bin/nova-manage fixed reserve 10.4
 ./stack.sh
 
 echo ""
-echo ""
-echo "YOUR INTERVENTION IS REQUIRED NOW!"
-echo ""
-echo ""
-echo "In order to use the OpenStack command line tools at the controller you must configure some environment variables"
-echo "Execute the command below to create then"
-echo -e "\tsource /opt/$USER/devstack/openrc"
+cat ~/.profile | grep "devstack/openrc admin" > /dev/null || echo "source /opt/$USER/devstack/openrc admin" >> ~/.profile
+source /opt/$USER/devstack/openrc admin
+echo "INSTALLATION COMPLETE"
 echo "OpenStack services are installed in subdirectories at /opt/$USER and it's services configuration files are located at /etc"

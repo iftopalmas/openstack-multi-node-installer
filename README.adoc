@@ -8,7 +8,7 @@ some manual steps as described in the https://docs.openstack.org/devstack/latest
 == How to Use
 
 DevStack documentation recommend you to use a minimal fresh installation of Linux such as https://help.ubuntu.com/community/Installation/MinimalCD[Ubuntu 16.04 Minimal CD].
-You're encourage to read the https://docs.openstack.org/devstack/latest/guides/multinode-lab.html[DevStack documentation] to understand what is going on behind the scenes.
+You're encouraged to read the https://docs.openstack.org/devstack/latest/guides/multinode-lab.html[DevStack documentation] to understand what is going on under the hood.
 
 === Install OpenStack Controller
 
@@ -17,3 +17,8 @@ After installing you Linux distribution you can just execute `./install.sh --con
 === Install OpenStack Node
 
 For every physical machine (node) that you want to add to the cluster you have to open a terminal at such a machine and execute `./install.sh --node Controller-IP`
+
+== References
+
+- https://sureshkvl.gitbooks.io/devstack-for-beginners/[DevStack for Beginners]
+- https://docs.oracle.com/cd/E78305_01/E78304/html/
